@@ -1,0 +1,43 @@
+{
+  "platform-version": "2.2",
+  "product": {
+    "freshdesk": {
+      "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateHandler"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketUpdateHandler"
+        },
+        "onConversationCreate": {
+          "handler": "onConversationCreateHandler"
+        },
+        "onContactCreate": {
+          "handler": "onContactCreateHandler"
+        },
+        "onContactUpdate": {
+          "handler": "onContactUpdateHandler"
+        },
+        "onCompanyCreate": {
+          "handler": "onCompanyCreateHandler"
+        },
+        "onCompanyUpdate": {
+          "handler": "onCompanyUpdateHandler"
+        },
+        "onCompanyDelete": {
+          "handler": "onCompanyDeleteHandler"
+        },
+        "onTimeEntryCreate": {
+          "handler": "onTimeEntryCreateHandler"
+        },
+        "onTimeEntryUpdate": {
+          "handler": "onTimeEntryUpdateHandler"
+        },
+        "onTimeEntryDelete": {
+          "handler": "onTimeEntryDeleteHandler"
+        }
+      }
+    }
+  },
+  "whitelisted-domains":[]
+}
