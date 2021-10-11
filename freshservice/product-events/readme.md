@@ -1,1 +1,1 @@
-work in progress
+## Serverless Product Events for Freshservice

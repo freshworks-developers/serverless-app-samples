@@ -1,0 +1,11 @@
+{
+  "platform-version": "2.2",
+  "product": {
+    "freshservice": {}
+  },
+  "whitelisted-domains": [],
+  "engines": {
+    "node": "12.22.6",
+    "fdk": "7.0.1"
+  }
+}
