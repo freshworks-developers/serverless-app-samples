@@ -1,7 +1,19 @@
 {
   "platform-version": "2.2",
   "product": {
-    "freshservice": {}
+    "freshservice": {
+      "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateHandler"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketUpdateHandler"
+        },
+        "onConversationCreate": {
+          "handler": "onConversationCreateHandler"
+        }
+      }
+    }
   },
   "whitelisted-domains": [],
   "engines": {
