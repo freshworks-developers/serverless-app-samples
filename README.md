@@ -27,7 +27,7 @@ Serverless app samples for Freshdesk.
 | **Topic**                               | **Status**  |
 |-----------------------------------------|-------------|
 | [App Setup and external events][fs_app] | ✅          |
-| [Product events][fs_product]            | In Progress |
+| [Product events][fs_product]            | ✅          |
 | [Scheduled events][fs_scheduled]        | ToDo        |
 | [Server Method Invocation][fs_smi]      | ToDo        |
 
