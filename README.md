@@ -2,12 +2,43 @@
 
 This repository contains sample apps demonstrating the usage of serverless features of the Freshworks Developer Platform.
 
-| **Product**        | | | | |
-|--------------------|-|-|-|-|
-| [Freshdesk][fd]    | [App Setup and external events][fd_app] | [Product events][fd_product] | [Scheduled events][fd_scheduled] | [Server Method Invocation][fd_smi] |
-| [Freshsales][fcrm] | - | [Product events][fcrm_product] | [Scheduled events][fcrm_scheduled] | [Server Method Invocation][fcrm_smi] |
-| [Freshservice][fs] | [App Setup and external events][fs_app] | [Product events][fs_product] | [Scheduled events][fs_scheduled] | [Server Method Invocation][fs_smi] |
-| [Freshteam][ft]    | - | [Product events][ft_product] | [Scheduled events][ft_scheduled] | [Server Method Invocation][ft_smi] |
+## [Freshdesk][fd]
+
+Serverless app samples for Freshdesk.
+
+| **Topic**                               | **Status**  |
+|-----------------------------------------|-------------|
+| [App Setup and external events][fd_app] | ✅          |
+| [Product events][fd_product]            | ✅          |
+| [Scheduled events][fd_scheduled]        | ✅          |
+| [Server Method Invocation][fd_smi]      | ✅          |
+
+## [Freshsales][fcrm]
+
+| **Topic**                               | **Status**  |
+|-----------------------------------------|-------------|
+| App Setup and external events           | ToDo        |
+| [Product events][fcrm_product]          | ToDo        |
+| [Scheduled events][fcrm_scheduled]      | ToDo        |
+| [Server Method Invocation][fcrm_smi]    | ToDo        |
+
+## [Freshservice][fs]
+
+| **Topic**                               | **Status**  |
+|-----------------------------------------|-------------|
+| [App Setup and external events][fs_app] | ✅          |
+| [Product events][fs_product]            | In Progress |
+| [Scheduled events][fs_scheduled]        | ToDo        |
+| [Server Method Invocation][fs_smi]      | ToDo        |
+
+## [Freshteam][ft]
+
+| **Topic**                               | **Status** |
+|-----------------------------------------|------------|
+| App Setup and external events           | ToDo       |
+| [Product events][ft_product]            | ToDo       |
+| [Scheduled events][ft_scheduled]        | ToDo       |
+| [Server Method Invocation][ft_smi]      | ToDo       |
 
 [fd]: freshdesk/
 [fd_app]: freshdesk/app-setup-and-external-events/
