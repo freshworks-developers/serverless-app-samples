@@ -3,7 +3,8 @@
     "display_name": "Freshdesk API Key",
     "description": "Please enter your freshdesk api key",
     "type": "text",
+    "data-bind": true,
     "required": true,
-    "secure":true
+    "secure": true
   }
 }
