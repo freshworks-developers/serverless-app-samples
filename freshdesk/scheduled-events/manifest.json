@@ -7,11 +7,18 @@
           "url": "templates/index.html",
           "icon": "images/icon.svg"
         }
+      },
+      "events": {
+        "onScheduledEvent": { "handler": "onScheduledEventHandler" }
       }
     }
   },
   "dependencies": {
     "request": "2.88.2",
     "base-64": "1.0.0"
+  },
+  "engines": {
+    "node": "12.22.7",
+    "fdk": "7.1.2"
   }
 }

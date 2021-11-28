@@ -61,8 +61,6 @@ function removeScheduleFromList(loggedInUserId, scheduleName, callback) {
 }
 
 exports = {
-  events: [{ event: 'onScheduledEvent', callback: 'onScheduledEventHandler' }],
-
   createSchedule: function (args) {
     $schedule
       .create({
