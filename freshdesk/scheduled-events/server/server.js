@@ -60,20 +60,32 @@ function removeScheduleFromList(loggedInUserId, scheduleName, callback) {
   });
 }
 
+function to(promise, improved) {
+  return promise
+    .then((data) => [null, data])
+    .catch((err) => {
+      if (improved) {
+        Object.assign(err, improved);
+      }
+      return [err];
+    });
+}
+
 exports = {
   createSchedule: async function (args) {
     console.log('Creating schedule');
-    try {
-      let data = await $schedule.create({
-        name: args.scheduleName,
-        data: args.scheduleData,
-        schedule_at: args.scheduleData.scheduleAtUTC
-      });
-      console.log('data', data);
-      renderData(null, data);
-    } catch (error) {
-      renderData(err);
+    var scheduleInformation = {
+      name: args.scheduleName,
+      data: args.scheduleData,
+      schedule_at: args.scheduleData.scheduleAtUTC
+    };
+    const [error, scheduleStatus] = await to($schedule.create(scheduleInformation));
+    if (error) {
+      console.error('Unable to create the schedule becase: ', error);
+      renderData(error);
     }
+    console.info('Schedule created successfully', scheduleStatus);
+    renderData(null, scheduleStatus);
   },
 
   fetchSchedule: function (args) {
