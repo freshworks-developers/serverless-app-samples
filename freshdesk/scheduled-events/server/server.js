@@ -61,21 +61,19 @@ function removeScheduleFromList(loggedInUserId, scheduleName, callback) {
 }
 
 exports = {
-  createSchedule: function (args) {
-    $schedule
-      .create({
+  createSchedule: async function (args) {
+    console.log('Creating schedule');
+    try {
+      let data = await $schedule.create({
         name: args.scheduleName,
         data: args.scheduleData,
         schedule_at: args.scheduleData.scheduleAtUTC
-      })
-      .then(
-        function (data) {
-          renderData(null, data);
-        },
-        function (err) {
-          renderData(err);
-        }
-      );
+      });
+      console.log('data', data);
+      renderData(null, data);
+    } catch (error) {
+      renderData(err);
+    }
   },
 
   fetchSchedule: function (args) {

@@ -10,6 +10,20 @@
       },
       "events": {
         "onScheduledEvent": { "handler": "onScheduledEventHandler" }
+      },
+      "functions": {
+        "createSchedule": {
+          "timeout": 5
+        },
+        "fetchSchedule": {
+          "timeout": 5
+        },
+        "updateSchedule": {
+          "timeout": 5
+        },
+        "deleteSchedule": {
+          "timeout": 5
+        }
       }
     }
   },
