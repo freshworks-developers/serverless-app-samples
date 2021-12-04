@@ -60,84 +60,74 @@ function removeScheduleFromList(loggedInUserId, scheduleName, callback) {
   });
 }
 
-function to(promise, improved) {
-  return promise
-    .then((data) => [null, data])
-    .catch((err) => {
-      if (improved) {
-        Object.assign(err, improved);
-      }
-      return [err];
-    });
-}
-
 exports = {
   createSchedule: async function (args) {
-    console.log('Creating schedule');
-    var scheduleInformation = {
-      name: args.scheduleName,
-      data: args.scheduleData,
-      schedule_at: args.scheduleData.scheduleAtUTC
-    };
-    const [error, scheduleStatus] = await to($schedule.create(scheduleInformation));
-    if (error) {
-      console.error('Unable to create the schedule becase: ', error);
-      renderData(error);
-    }
-    console.info('Schedule created successfully', scheduleStatus);
-    renderData(null, scheduleStatus);
-  },
-
-  fetchSchedule: function (args) {
-    $schedule
-      .fetch({
-        name: args.scheduleName
-      })
-      .then(
-        function (data) {
-          renderData(null, data);
-        },
-        function (err) {
-          renderData(err);
-        }
-      );
-  },
-
-  updateSchedule: function (args) {
-    $schedule
-      .update({
+    try {
+      let scheduleDetails = {
         name: args.scheduleName,
         data: args.scheduleData,
         schedule_at: args.scheduleData.scheduleAtUTC
-      })
-      .then(
-        function (data) {
-          renderData(null, data);
-        },
-        function (err) {
-          renderData(err);
-        }
-      );
+      };
+      let scheduleCreationStatus = await $schedule.create(scheduleDetails);
+      renderData(null, scheduleCreationStatus);
+    } catch (error) {
+      console.error('App is facing problems creating a schedule:', error);
+      renderData(err);
+    }
   },
 
-  deleteSchedule: function (args) {
-    $schedule
-      .delete({
+  fetchSchedule: async function (args) {
+    try {
+      let data = await $schedule.fetch({
         name: args.scheduleName
-      })
-      .then(
-        function (data) {
-          renderData(null, data);
-        },
-        function (err) {
-          renderData(err);
-        }
-      );
+      });
+      renderData(null, data);
+    } catch (error) {
+      console.error('App is facing problems fetching a schedule:', error);
+      renderData(error);
+    }
   },
 
-  onScheduledEventHandler: function (args) {
-    removeScheduleFromList(args.data.loggedInUserId, args.data.scheduleName, function () {
-      createTicket(args);
-    });
+  updateSchedule: async function (args) {
+    try {
+      let data = await $schedule.update({
+        name: args.scheduleName,
+        data: args.scheduleData,
+        schedule_at: args.scheduleData.scheduleAtUTC
+      });
+      renderData(null, data);
+    } catch (error) {
+      console.error('App is facing problems updating a schedule:', error);
+      renderData(error);
+    }
+  },
+
+  deleteSchedule: async function (args) {
+    try {
+      let data = await $schedule.delete({ name: args.scheduleName });
+      renderData(null, data);
+    } catch (error) {
+      console.error('App is facing problems deleting a schedule:', error);
+      renderData(error);
+    }
+  },
+
+  onScheduledEventHandler: async function (payload) {
+    try {
+      console.log(payload);
+    } catch (error) {
+      console.error('App is facing problems:', error);
+    }
+    /**
+     * 1. Remove the Schedule from the list of scheduled events
+     *   1.1 Get the list of schedules for the logged in user
+     *   1.2 Delete the schedule from the list
+     * 2. Create a ticket
+     *   2.1 Make a POST request to Freshdesk API
+     *   2.2 Display the ticket created
+     */
+    // try {
+    //   let data = await $db.get(`schedules_${userId}`);
+    // } catch (error) {}
   }
 };
