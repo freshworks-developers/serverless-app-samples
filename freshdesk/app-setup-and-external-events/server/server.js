@@ -1,16 +1,11 @@
 'use strict';
 /* Disclaimer: The use of mock servers in production environment is disallowed. pipedream.net can be used to debug or test your app's behavior locally.
-    However, this will not work when the app is deployed in a live account. 
+    However, this will not work when the app is deployed in a live account.
     We recommend switching to a custom mock server controlled by you in such scenarios. */
 
 const thirdPartyEndpoint = 'https://<CHANGE_THIS>.m.pipedream.net';
 
 exports = {
-  events: [
-    { event: 'onAppInstall', callback: 'onInstallHandler' },
-    { event: 'onAppUninstall', callback: 'onUninstallHandler' },
-    { event: 'onExternalEvent', callback: 'onExternalEventHandler' }
-  ],
   onInstallHandler: async function (payload) {
     try {
       const webhook = await generateTargetUrl();
@@ -41,6 +36,9 @@ exports = {
       console.error('Something went wrong. Webhook De-Registration has failed', error);
     }
     renderData();
+  },
+  afterAppUpdateHandler: async function (payload) {
+    console.log('\n Execute after app has updated \n')
   },
   onExternalEventHandler: function (payload) {
     const { data } = payload;

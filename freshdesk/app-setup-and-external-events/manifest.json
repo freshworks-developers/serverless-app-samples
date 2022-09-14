@@ -6,20 +6,20 @@
         "ticket_background": {
           "url": "ticket_background.html"
         }
-      }
-    },
-    "events":{
-      "onAppInstall":{
-        "handler":"onInstallHandler"
       },
-      "onAppUninstall":{
-        "handler":"onUninstallHandler"
-      },
-      "afterAppUpdate":{
-        "handler":"afterAppUpdateHandler"
-      },
-      "onExternalEvent":{
-        "handler":"onExternalEventHandler"
+      "events":{
+        "onAppInstall":{
+          "handler":"onInstallHandler"
+        },
+        "onAppUninstall":{
+          "handler":"onUninstallHandler"
+        },
+        "afterAppUpdate":{
+          "handler":"afterAppUpdateHandler"
+        },
+        "onExternalEvent":{
+          "handler":"onExternalEventHandler"
+        }
       }
     }
   },
