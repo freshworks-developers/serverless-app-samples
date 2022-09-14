@@ -1,5 +1,5 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "product": {
     "freshdesk": {
       "location": {
@@ -7,9 +7,27 @@
           "url": "ticket_background.html"
         }
       }
+    },
+    "events":{
+      "onAppInstall":{
+        "handler":"onInstallHandler"
+      },
+      "onAppUninstall":{
+        "handler":"onUninstallHandler"
+      },
+      "afterAppUpdate":{
+        "handler":"afterAppUpdateHandler"
+      },
+      "onExternalEvent":{
+        "handler":"onExternalEventHandler"
+      }
     }
   },
   "whitelisted-domains": [
     "https://*.m.pipedream.net"
-  ]
+  ],
+  "engines": {
+    "node": "14.19.3",
+    "fdk": "8.6.0"
+  }
 }
