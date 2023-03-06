@@ -6,6 +6,10 @@ exports = {
    */
   onTicketCreateHandler: function(args) {
     console.info(`Ticket created: ${args['data']['ticket']['id']}`);
+    // When using Test versions for Serverless apps, you can use the environment variable tensure the snippet of code executes in test environment only
+    if(process.env.ENV === "test"){
+      console.info("onTicketCreate has been invoked in test instance")
+    }
   },
 
   /**
@@ -15,6 +19,10 @@ exports = {
    */
   onTicketUpdateHandler: function (args) {
     console.info(`Ticket updated: ${args['data']['ticket']['id']}`);
+    // When using Test versions for Serverless apps, you can use the environment variable ensure the snippet of code executes in production environment only
+    if(process.env.ENV === "production"){
+      console.info("onTicketUpdate has been invoked in production instance")
+    }
   },
 
   /**
