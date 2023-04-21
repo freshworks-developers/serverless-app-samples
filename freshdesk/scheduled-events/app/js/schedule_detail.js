@@ -89,6 +89,7 @@ function addListeners() {
         })
         .then(
           function (data) {
+            console.log(data)
             // Persist the schedule name to the list post creation of schedule
             addScheduleToList(
               {
@@ -96,6 +97,7 @@ function addListeners() {
                 subject: scheduleData.subject
               },
               function (err) {
+                console.log(err);
                 sendNotification(SUCCESS_NOTIFICATION, 'Schedule created');
                 client.instance.close();
               }
@@ -127,6 +129,7 @@ function addListeners() {
         })
         .then(
           function (data) {
+            console.log(data)
             // Update the subject to the uuid in datastore
             addScheduleToList(
               {

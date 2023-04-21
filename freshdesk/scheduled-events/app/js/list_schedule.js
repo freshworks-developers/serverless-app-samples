@@ -63,6 +63,7 @@ function addListeners() {
     var scheduleName = element.parentElement.closest('.schedule-li').dataset.scheduleName;
 
     deleteSchedule(scheduleName, function(err, data) {
+      console.log(data)
       if (err) {
         return sendNotification('danger', `Error deleting the schedule`);
       }
@@ -83,9 +84,11 @@ function getListOfSchedules(userId, callback) {
 
 function renderListOfSchedules() {
   getListOfSchedules(loggedInUserId, function(schedules) {
+    console.log(schedules)
     const schedulesList = q('.schedules-ul');
     if (Object.keys(schedules.list).length > 0) {
-      const lis = schedules.list
+      console.log(schedules.list)
+      const lis = Object.keys(schedules.list)
         .map(scheduleName => `
           <li data-schedule-name="${scheduleName}" class="row schedule-li">
             <a class="schedule-title">${schedules.list[scheduleName]}</a>

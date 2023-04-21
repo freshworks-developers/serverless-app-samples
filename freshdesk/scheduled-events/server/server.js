@@ -114,6 +114,7 @@ exports = {
 
   onScheduledEventHandler: async function (payload) {
     try {
+      console.log("Scheduled event being executed")
       console.log(payload);
     } catch (error) {
       console.error('App is facing problems:', error);
