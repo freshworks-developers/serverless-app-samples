@@ -1,43 +1,27 @@
 {
-  "platform-version": "2.2",
-  "product": {
-    "freshdesk": {
+  "platform-version": "3.0",
+  "modules": {
+    "common": {
+      "events": {
+        "onAppInstall": {
+          "handler": "onAppInstallHandler"
+        }
+      },
+      "requests": {
+        "createIssue": {}
+      }
+    },
+    "support_ticket": {
       "events": {
         "onTicketCreate": {
-          "handler": "onTicketCreateHandler"
-        },
-        "onTicketUpdate": {
-          "handler": "onTicketUpdateHandler"
-        },
-        "onConversationCreate": {
-          "handler": "onConversationCreateHandler"
-        },
-        "onContactCreate": {
-          "handler": "onContactCreateHandler"
-        },
-        "onContactUpdate": {
-          "handler": "onContactUpdateHandler"
-        },
-        "onCompanyCreate": {
-          "handler": "onCompanyCreateHandler"
-        },
-        "onCompanyUpdate": {
-          "handler": "onCompanyUpdateHandler"
-        },
-        "onCompanyDelete": {
-          "handler": "onCompanyDeleteHandler"
-        },
-        "onTimeEntryCreate": {
-          "handler": "onTimeEntryCreateHandler"
-        },
-        "onTimeEntryUpdate": {
-          "handler": "onTimeEntryUpdateHandler"
-        },
-        "onTimeEntryDelete": {
-          "handler": "onTimeEntryDeleteHandler"
+          "handler": "onTicketCreateCallback"
         }
       }
     }
   },
-  "whitelisted-domains":[]
-}
+  "engines": {
+    "node": "18.18.0",
+    "fdk": "9.1.0"
+  }
+    }
+ 

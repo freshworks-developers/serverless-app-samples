@@ -1,1 +1,21 @@
-{}
+{
+  "apiKey": {
+    "display_name": "Enter Github API Key",
+    "description": "Get it from https://github.com/settings/tokens",
+    "type": "text",
+    "secure": true,
+    "required": true
+      },
+   "github_repo_name": {
+    "display_name": "GitHub Repository Name, Ex: githubhandle/reponame",
+    "description": "Name of the GitHub repository",
+    "type": "text",
+    "required": true
+   }
+}
+
+
+
+
+
+

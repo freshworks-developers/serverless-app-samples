@@ -1,0 +1,17 @@
+{
+  "createIssue": {
+    "schema": {
+      "method": "POST",
+      "protocol": "https",
+      "host": "api.github.com",
+      "path": "/repos/<%= iparam.github_repo_name %>/issues",
+      "headers": {
+        "Authorization": "Bearer <%= encode(iparam.github_api_token) %>",
+        "user-Agent": "FreshworksApp",
+        "Content-Type": "application/json"
+      }
+    
+  }
+}
+
+}
