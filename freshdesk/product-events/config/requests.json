@@ -6,12 +6,12 @@
       "host": "api.github.com",
       "path": "/repos/<%= iparam.github_repo_name %>/issues",
       "headers": {
-        "Authorization": "Bearer <%= encode(iparam.github_api_token) %>",
-        "user-Agent": "FreshworksApp",
-        "Content-Type": "application/json"
+        "Authorization": "Bearer <%= iparam.apiKey %>",
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "Freshworks App"
       }
-    
+    }
   }
-}
-
 }
