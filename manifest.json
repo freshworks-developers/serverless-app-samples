@@ -1,0 +1,53 @@
+{
+  "platform-version": "3.0",
+  "modules": {
+    "common": {
+      "events": {
+        "onAppInstall": {
+          "handler": "onAppInstallHandler"
+        },
+        "onAppUninstall": {
+          "handler": "onAppUninstallHandler"
+        },
+        "onScheduledEvent": {
+          "handler": "onScheduledEventHandler"
+        },
+        "onExternalEvent": {
+          "handler": "onExternalEventHandler"
+        }
+      }
+    },
+    "support_agent": {
+      "events": {
+        "onAgentCreate": {
+          "handler": "onAgentCreateHandler"
+        }
+      }
+    },
+    "support_company": {
+      "events": {
+        "onCompanyCreate": {
+          "handler": "onCompanyCreateCallback"
+        }
+      }
+    },
+    "chat_conversation": {
+      "events": {
+        "onConversationCreate": {
+          "handler": "onConversationCreateCallback"
+        }
+      }
+    },
+    "caller_conversation": {
+      "events": {
+        "onCallCreate": {
+          "handler": "onCallCreateCallback"
+        }
+      }
+    }
+  },
+  "engines": {
+    "node": "18.13.0",
+    "fdk": "9.1.0"
+  }
+}

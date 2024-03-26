@@ -1,60 +1,37 @@
-# Serverless app samples for Freshworks app developers
+## Serverless App Sample
 
-This repository contains sample apps demonstrating the usage of serverless features of the Freshworks Developer Platform.
+This samples repository consists of exampls and samples of using Serverless app that uses the features of [App Setup events](https://freshworks.dev/docs/app-sdk/v3.0/common/serverless-apps/app-set-up-events/), [Scheduled events](https://freshworks.dev/docs/app-sdk/v3.0/common/serverless-apps/scheduled-events/), [External events](https://freshworks.dev/docs/app-sdk/v3.0/common/serverless-apps/external-events/) and also different Product events that are supported in different modules -
 
-## [Freshdesk][fd]
+| Module | Works in Product | Serverless event |
+| ----- | ------- | ------- |
+| `common` | App setup - common across all products | `onAppInstall` `onAppUninstall` |
+| `common` | Scheduled events - common across all products | `onScheduledEvent` |
+| `common` | External events - common across all products | `onExternalEvent` |
+| `support_agent` | Freshdesk | `onAgentCreate` |
+| `support_company` | Freshdesk | `onCompanyCreateCallback` |
+| `chat_conversation` | Freshchat, Freshsales Suite (Freshsales classic, Freshchat and Freshcaller / only Freshchat / only Freshcaller / only Freshsales classic) | `onConversationCreate` |
+| `caller_conversation` | Freshcaller, Freshsales Suite (Freshsales classic, Freshchat and Freshcaller / only Freshcaller) | `onCallCreateCallback` |
 
-Serverless app samples for Freshdesk.
 
-| **Topic**                               | **Status**  |
-|-----------------------------------------|-------------|
-| [App Setup and external events][fd_app] | ✅          |
-| [Product events][fd_product]            | ✅          |
-| [Scheduled events][fd_scheduled]        | ✅          |
-| [Server Method Invocation][fd_smi]      | ✅          |
+### Event payload sample
 
-## [Freshsales][fcrm]
-
-| **Topic**                               | **Status**  |
-|-----------------------------------------|-------------|
-| App Setup and external events           | ToDo        |
-| [Product events][fcrm_product]          | ToDo        |
-| [Scheduled events][fcrm_scheduled]      | ToDo        |
-| [Server Method Invocation][fcrm_smi]    | ToDo        |
-
-## [Freshservice][fs]
-
-| **Topic**                               | **Status**  |
-|-----------------------------------------|-------------|
-| [App Setup and external events][fs_app] | ✅          |
-| [Product events][fs_product]            | ✅          |
-| [Scheduled events][fs_scheduled]        | ToDo        |
-| [Server Method Invocation][fs_smi]      | ToDo        |
-
-## [Freshteam][ft]
-
-| **Topic**                               | **Status** |
-|-----------------------------------------|------------|
-| App Setup and external events           | ToDo       |
-| [Product events][ft_product]            | ToDo       |
-| [Scheduled events][ft_scheduled]        | ToDo       |
-| [Server Method Invocation][ft_smi]      | ToDo       |
-
-[fd]: freshdesk/
-[fd_app]: freshdesk/app-setup-and-external-events/
-[fd_product]: freshdesk/product-events/
-[fd_scheduled]: freshdesk/scheduled-events/
-[fd_smi]: freshdesk/server-method-invocation/
-[fcrm]: freshsales/
-[fcrm_product]: freshsales/product-events/
-[fcrm_scheduled]: freshsales/scheduled-events/
-[fcrm_smi]: freshsales/server-method-invocation/
-[fs]: freshservice/
-[fs_app]: freshservice/app-setup-and-external-events/
-[fs_product]: freshservice/product-events/
-[fs_scheduled]: freshservice/scheduled-events/
-[fs_smi]: freshservice/server-method-invocation/
-[ft]: freshteam/
-[ft_product]: freshteam/product-events/
-[ft_scheduled]: freshteam/scheduled-events/
-[ft_smi]: freshteam/server-method-invocation/
+```
+{
+  "currentHost": {
+    "subscribed_modules": [ "value1", "value2" ],
+    "endpoint_urls": {
+      "<product_name>": "value"
+      }
+  },
+  "data": {
+   //Contains the list of objects related to the event.
+  },
+  "event": "value",
+  "iparams": {
+    "Param1": "value",
+    "Param2": "value"
+  },
+  "region": "value",
+  "timestamp": "value"
+}
+```
