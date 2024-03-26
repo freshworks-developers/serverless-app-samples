@@ -45,7 +45,7 @@ exports = {
     console.log("Logging arguments from onCompanyCreate event: " + JSON.stringify(args));
   },
 
-  //chat_conversation module event
+  //support_ticket, service_ticket, chat_conversation module event
   onConversationCreateCallback: function (args) {
     console.log("Logging arguments from onConversationCreate event: " + JSON.stringify(args));
   },

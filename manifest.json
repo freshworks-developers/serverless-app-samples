@@ -31,6 +31,20 @@
         }
       }
     },
+    "support_ticket":{
+      "events": {
+        "onConversationCreate": {
+          "handler": "onConversationCreateCallback"
+        }
+      }
+    },
+    "service_ticket": {
+      "events": {
+        "onConversationCreate": {
+          "handler": "onConversationCreateCallback"
+        }
+      }
+    },
     "chat_conversation": {
       "events": {
         "onConversationCreate": {

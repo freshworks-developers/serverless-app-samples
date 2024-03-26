@@ -9,6 +9,8 @@ This samples repository consists of exampls and samples of using Serverless app 
 | `common` | External events - common across all products | `onExternalEvent` |
 | `support_agent` | Freshdesk | `onAgentCreate` |
 | `support_company` | Freshdesk | `onCompanyCreateCallback` |
+| `support_ticket` | Freshdesk | `onConversationCreate` |
+| `service_ticket` | Freshservice | `onConversationCreate` |
 | `chat_conversation` | Freshchat, Freshsales Suite (Freshsales classic, Freshchat and Freshcaller / only Freshchat / only Freshcaller / only Freshsales classic) | `onConversationCreate` |
 | `caller_conversation` | Freshcaller, Freshsales Suite (Freshsales classic, Freshchat and Freshcaller / only Freshcaller) | `onCallCreateCallback` |
 
