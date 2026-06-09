@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EventPulse Serverless</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script async src="{{{appclient}}}"></script>
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
+<body>
+  <section class="app-body">
+    <fw-icon name="pulse" size="20" color="#2d6cdf"></fw-icon>
+    <h1>EventPulse</h1>
+    <p class="subtitle">Serverless event log — dev status panel (Crayons v4)</p>
+
+    <fw-accordion>
+      <fw-accordion-title slot="header">Registered handlers</fw-accordion-title>
+      <fw-accordion-body slot="body">
+        <ul id="handler-status" class="handler-list"></ul>
+      </fw-accordion-body>
+    </fw-accordion>
+
+    <div class="log-panel">
+      <div class="log-header">
+        <strong>Event log</strong>
+        <fw-button id="refresh-log" color="primary" size="small">Refresh</fw-button>
+      </div>
+      <fw-inline-message id="log-status" type="info" closable="false">
+        Loading event log from server…
+      </fw-inline-message>
+      <ul id="event-log" class="event-log"></ul>
+    </div>
+  </section>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

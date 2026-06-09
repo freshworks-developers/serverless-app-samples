@@ -1,0 +1,16 @@
+{
+  "timestamp": 1711363200000,
+  "event": "onExternalEvent",
+  "region": "US",
+  "headers": {
+    "x-demo-source": "webhook"
+  },
+  "data": {
+    "action": "sync_complete",
+    "records": 3
+  },
+  "iparams": {
+    "subdomain": "demo",
+    "api_key": "test-api-key"
+  }
+}

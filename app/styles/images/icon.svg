@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 100 100" role="img" aria-label="EventPulse">
+  <rect x="12" y="20" width="76" height="60" rx="8" fill="#1e3a5f"/>
+  <polyline points="22,62 38,48 52,58 78,32" fill="none" stroke="#2d6cdf" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="78" cy="32" r="5" fill="#5eead4"/>
+</svg>

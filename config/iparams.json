@@ -1,1 +1,15 @@
-{}
+{
+  "subdomain": {
+    "display_name": "Freshdesk subdomain",
+    "description": "Account subdomain used by $request.invokeTemplate demos (e.g. acme from acme.freshdesk.com)",
+    "type": "text",
+    "required": true
+  },
+  "api_key": {
+    "display_name": "Freshdesk API key",
+    "description": "API key for ticket fetch during onTicketCreate and scheduled sync demos",
+    "type": "text",
+    "required": true,
+    "secure": true
+  }
+}

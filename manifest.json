@@ -2,9 +2,28 @@
   "platform-version": "3.0",
   "modules": {
     "common": {
+      "location": {
+        "full_page_app": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
+      "requests": {
+        "listTickets": {},
+        "getTicket": {},
+        "healthCheck": {}
+      },
+      "functions": {
+        "getEventLog": {
+          "timeout": 10
+        }
+      },
       "events": {
         "onAppInstall": {
           "handler": "onAppInstallHandler"
+        },
+        "afterAppUpdate": {
+          "handler": "afterAppUpdateHandler"
         },
         "onAppUninstall": {
           "handler": "onAppUninstallHandler"
@@ -31,15 +50,33 @@
         }
       }
     },
-    "support_ticket":{
+    "support_ticket": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
       "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateHandler"
+        },
         "onConversationCreate": {
           "handler": "onConversationCreateCallback"
         }
       }
     },
     "service_ticket": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
       "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateHandler"
+        },
         "onConversationCreate": {
           "handler": "onConversationCreateCallback"
         }
@@ -52,7 +89,7 @@
         }
       }
     },
-    "caller_conversation": {
+    "call": {
       "events": {
         "onCallCreate": {
           "handler": "onCallCreateCallback"
@@ -61,7 +98,7 @@
     }
   },
   "engines": {
-    "node": "18.13.0",
-    "fdk": "9.1.0"
+    "node": "24.11.0",
+    "fdk": "10.1.2"
   }
 }
