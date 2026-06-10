@@ -2,9 +2,18 @@
   "platform-version": "3.0",
   "modules": {
     "common": {
+      "location": {
+        "full_page_app": {
+          "url": "index.html",
+          "icon": "icon.svg"
+        }
+      },
       "events": {
         "onAppInstall": {
           "handler": "onAppInstallHandler"
+        },
+        "afterAppUpdate": {
+          "handler": "afterAppUpdateHandler"
         },
         "onAppUninstall": {
           "handler": "onAppUninstallHandler"
@@ -15,12 +24,59 @@
         "onExternalEvent": {
           "handler": "onExternalEventHandler"
         }
+      },
+      "functions": {
+        "smiEcho": {
+          "timeout": 10
+        },
+        "fetchScheduleDetails": {
+          "timeout": 10
+        },
+        "updateScheduleDemo": {
+          "timeout": 10
+        },
+        "getJobDetails": {
+          "timeout": 10
+        },
+        "listJobHistory": {
+          "timeout": 10
+        }
+      },
+      "jobs": {
+        "bulkTicket": {}
       }
     },
     "support_agent": {
       "events": {
         "onAgentCreate": {
           "handler": "onAgentCreateHandler"
+        },
+        "onAgentUpdate": {
+          "handler": "onAgentUpdateCallback"
+        },
+        "onAgentDelete": {
+          "handler": "onAgentDeleteCallback"
+        },
+        "onAgentStatusCreate": {
+          "handler": "onAgentStatusCreateCallback"
+        },
+        "onAgentStatusUpdate": {
+          "handler": "onAgentStatusUpdateCallback"
+        },
+        "onAgentStatusDelete": {
+          "handler": "onAgentStatusDeleteCallback"
+        },
+        "onAgentAvailabilityUpdate": {
+          "handler": "onAgentAvailabilityUpdateCallback"
+        },
+        "onGroupCreate": {
+          "handler": "onGroupCreateCallback"
+        },
+        "onGroupUpdate": {
+          "handler": "onGroupUpdateCallback"
+        },
+        "onGroupDelete": {
+          "handler": "onGroupDeleteCallback"
         }
       }
     },
@@ -28,18 +84,69 @@
       "events": {
         "onCompanyCreate": {
           "handler": "onCompanyCreateCallback"
+        },
+        "onCompanyUpdate": {
+          "handler": "onCompanyUpdateCallback"
+        },
+        "onCompanyDelete": {
+          "handler": "onCompanyDeleteCallback"
         }
       }
     },
-    "support_ticket":{
+    "support_ticket": {
       "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateCallback"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketUpdateCallback"
+        },
+        "onTicketDelete": {
+          "handler": "onTicketDeleteCallback"
+        },
         "onConversationCreate": {
           "handler": "onConversationCreateCallback"
+        },
+        "onConversationUpdate": {
+          "handler": "onConversationUpdateCallback"
+        },
+        "onConversationDelete": {
+          "handler": "onConversationDeleteCallback"
+        },
+        "onCannedResponseCreate": {
+          "handler": "onCannedResponseCreateCallback"
+        },
+        "onCannedResponseUpdate": {
+          "handler": "onCannedResponseUpdateCallback"
+        },
+        "onCannedResponseDelete": {
+          "handler": "onCannedResponseDeleteCallback"
+        },
+        "onTicketFieldCreate": {
+          "handler": "onTicketFieldCreateCallback"
+        },
+        "onTicketFieldDelete": {
+          "handler": "onTicketFieldDeleteCallback"
+        },
+        "onTimeEntryCreate": {
+          "handler": "onTimeEntryCreateCallback"
+        },
+        "onTimeEntryUpdate": {
+          "handler": "onTimeEntryUpdateCallback"
+        },
+        "onTimeEntryDelete": {
+          "handler": "onTimeEntryDeleteCallback"
         }
       }
     },
     "service_ticket": {
       "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateCallback"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketUpdateCallback"
+        },
         "onConversationCreate": {
           "handler": "onConversationCreateCallback"
         }
@@ -48,20 +155,35 @@
     "chat_conversation": {
       "events": {
         "onConversationCreate": {
-          "handler": "onConversationCreateCallback"
+          "handler": "onChatConversationCreateCallback"
+        },
+        "onConversationUpdate": {
+          "handler": "onChatConversationUpdateCallback"
+        },
+        "onMessageCreate": {
+          "handler": "onMessageCreateCallback"
+        },
+        "onAgentActivityCreate": {
+          "handler": "onAgentActivityCreateCallback"
         }
       }
     },
-    "caller_conversation": {
+    "call": {
       "events": {
         "onCallCreate": {
           "handler": "onCallCreateCallback"
+        },
+        "onCallUpdate": {
+          "handler": "onCallUpdateCallback"
         }
       }
     }
   },
   "engines": {
-    "node": "18.13.0",
-    "fdk": "9.1.0"
+    "node": "24.11.1",
+    "fdk": "10.1.2"
+  },
+  "scripts": {
+    "fdk-unit-test": "vitest run --coverage"
   }
 }
