@@ -5,17 +5,7 @@
       "location": {
         "full_page_app": {
           "url": "index.html",
-          "icon": "styles/images/icon.svg"
-        }
-      },
-      "requests": {
-        "listTickets": {},
-        "getTicket": {},
-        "healthCheck": {}
-      },
-      "functions": {
-        "getEventLog": {
-          "timeout": 10
+          "icon": "icon.svg"
         }
       },
       "events": {
@@ -34,12 +24,59 @@
         "onExternalEvent": {
           "handler": "onExternalEventHandler"
         }
+      },
+      "functions": {
+        "smiEcho": {
+          "timeout": 10
+        },
+        "fetchScheduleDetails": {
+          "timeout": 10
+        },
+        "updateScheduleDemo": {
+          "timeout": 10
+        },
+        "getJobDetails": {
+          "timeout": 10
+        },
+        "listJobHistory": {
+          "timeout": 10
+        }
+      },
+      "jobs": {
+        "bulkTicket": {}
       }
     },
     "support_agent": {
       "events": {
         "onAgentCreate": {
           "handler": "onAgentCreateHandler"
+        },
+        "onAgentUpdate": {
+          "handler": "onAgentUpdateCallback"
+        },
+        "onAgentDelete": {
+          "handler": "onAgentDeleteCallback"
+        },
+        "onAgentStatusCreate": {
+          "handler": "onAgentStatusCreateCallback"
+        },
+        "onAgentStatusUpdate": {
+          "handler": "onAgentStatusUpdateCallback"
+        },
+        "onAgentStatusDelete": {
+          "handler": "onAgentStatusDeleteCallback"
+        },
+        "onAgentAvailabilityUpdate": {
+          "handler": "onAgentAvailabilityUpdateCallback"
+        },
+        "onGroupCreate": {
+          "handler": "onGroupCreateCallback"
+        },
+        "onGroupUpdate": {
+          "handler": "onGroupUpdateCallback"
+        },
+        "onGroupDelete": {
+          "handler": "onGroupDeleteCallback"
         }
       }
     },
@@ -47,22 +84,58 @@
       "events": {
         "onCompanyCreate": {
           "handler": "onCompanyCreateCallback"
+        },
+        "onCompanyUpdate": {
+          "handler": "onCompanyUpdateCallback"
+        },
+        "onCompanyDelete": {
+          "handler": "onCompanyDeleteCallback"
         }
       }
     },
     "support_ticket": {
-      "location": {
-        "ticket_sidebar": {
-          "url": "index.html",
-          "icon": "styles/images/icon.svg"
-        }
-      },
       "events": {
         "onTicketCreate": {
-          "handler": "onTicketCreateHandler"
+          "handler": "onTicketCreateCallback"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketUpdateCallback"
+        },
+        "onTicketDelete": {
+          "handler": "onTicketDeleteCallback"
         },
         "onConversationCreate": {
           "handler": "onConversationCreateCallback"
+        },
+        "onConversationUpdate": {
+          "handler": "onConversationUpdateCallback"
+        },
+        "onConversationDelete": {
+          "handler": "onConversationDeleteCallback"
+        },
+        "onCannedResponseCreate": {
+          "handler": "onCannedResponseCreateCallback"
+        },
+        "onCannedResponseUpdate": {
+          "handler": "onCannedResponseUpdateCallback"
+        },
+        "onCannedResponseDelete": {
+          "handler": "onCannedResponseDeleteCallback"
+        },
+        "onTicketFieldCreate": {
+          "handler": "onTicketFieldCreateCallback"
+        },
+        "onTicketFieldDelete": {
+          "handler": "onTicketFieldDeleteCallback"
+        },
+        "onTimeEntryCreate": {
+          "handler": "onTimeEntryCreateCallback"
+        },
+        "onTimeEntryUpdate": {
+          "handler": "onTimeEntryUpdateCallback"
+        },
+        "onTimeEntryDelete": {
+          "handler": "onTimeEntryDeleteCallback"
         }
       }
     },
@@ -75,7 +148,10 @@
       },
       "events": {
         "onTicketCreate": {
-          "handler": "onTicketCreateHandler"
+          "handler": "onTicketCreateCallback"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketUpdateCallback"
         },
         "onConversationCreate": {
           "handler": "onConversationCreateCallback"
@@ -85,7 +161,16 @@
     "chat_conversation": {
       "events": {
         "onConversationCreate": {
-          "handler": "onConversationCreateCallback"
+          "handler": "onChatConversationCreateCallback"
+        },
+        "onConversationUpdate": {
+          "handler": "onChatConversationUpdateCallback"
+        },
+        "onMessageCreate": {
+          "handler": "onMessageCreateCallback"
+        },
+        "onAgentActivityCreate": {
+          "handler": "onAgentActivityCreateCallback"
         }
       }
     },
@@ -93,12 +178,18 @@
       "events": {
         "onCallCreate": {
           "handler": "onCallCreateCallback"
+        },
+        "onCallUpdate": {
+          "handler": "onCallUpdateCallback"
         }
       }
     }
   },
   "engines": {
-    "node": "24.11.0",
+    "node": "24.11.1",
     "fdk": "10.1.2"
+  },
+  "scripts": {
+    "fdk-unit-test": "vitest run --coverage"
   }
 }

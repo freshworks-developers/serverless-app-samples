@@ -1,73 +1,77 @@
-const HANDLERS = [
-  { event: 'onAppInstall', apis: '$schedule.create, generateTargetUrl, $db.set' },
-  { event: 'afterAppUpdate', apis: '$schedule.fetch, $db.update' },
-  { event: 'onAppUninstall', apis: '$schedule.delete, $db.delete' },
-  { event: 'onScheduledEvent', apis: '$request.invokeTemplate, $db.update' },
-  { event: 'onExternalEvent', apis: '$db event log' },
-  { event: 'onTicketCreate', apis: '$request.invokeTemplate, $db.update' },
-  { event: 'onAgentCreate', apis: 'Freshdesk agent event' },
-  { event: 'onCompanyCreate', apis: 'Freshdesk company event' },
-  { event: 'onConversationCreate', apis: 'Freshdesk / Freshservice / Freshchat' },
-  { event: 'onCallCreate', apis: 'Freshcaller call module' }
-];
-
-document.onreadystatechange = function () {
-  if (document.readyState === 'interactive') {
-    renderHandlerList();
-    initApp();
-  }
+const appState = {
+  client: null,
+  latestJobId: ''
 };
 
-function renderHandlerList() {
-  const list = document.getElementById('handler-status');
-  list.innerHTML = HANDLERS.map(function (item) {
-    return '<li><strong>' + item.event + '</strong> — ' + item.apis + '</li>';
-  }).join('');
+function writeOutput(label, value) {
+  const output = document.getElementById('output');
+  output.textContent = label + '\n' + JSON.stringify(value, null, 2);
 }
 
-function setLogStatus(type, message) {
-  const statusEl = document.getElementById('log-status');
-  statusEl.setAttribute('type', type);
-  statusEl.textContent = message;
+function bind(id, handler) {
+  document.getElementById(id).addEventListener('click', handler);
 }
 
-function initApp() {
-  app.initialized()
-    .then(function (client) {
-      window.client = client;
-      document.getElementById('refresh-log').addEventListener('fwClick', loadEventLog);
-      loadEventLog();
-    })
-    .catch(handleErr);
+async function invokeSMI(method, payload) {
+  const result = await appState.client.request.invoke(method, payload || {});
+  return result.response;
 }
 
-function loadEventLog() {
-  const logEl = document.getElementById('event-log');
-  setLogStatus('info', 'Loading event log from server…');
+async function initApp() {
+  appState.client = await app.initialized();
+  writeOutput('Ready', { message: 'Client initialized' });
 
-  client.request.invoke('getEventLog', {})
-    .then(function (response) {
-      const payload = response && response.response ? response.response : response;
-      const entries = (payload && payload.entries) || [];
+  bind('btn-smi-echo', async function () {
+    const message = document.getElementById('smi-message').value;
+    const response = await invokeSMI('smiEcho', { message: message });
+    writeOutput('smiEcho response', response);
+  });
 
-      if (!entries.length) {
-        logEl.innerHTML = '<li class="empty">No events yet — run <code>fdk run</code> and simulate handlers.</li>';
-        setLogStatus('warning', 'Event log empty. Trigger serverless events to populate $db.');
-        return;
-      }
+  bind('btn-fetch-schedule', async function () {
+    const response = await invokeSMI('fetchScheduleDetails', { name: 'finsecure_sla_scan' });
+    writeOutput('fetchScheduleDetails response', response);
+  });
 
-      logEl.innerHTML = entries.map(function (entry) {
-        return '<li><span class="ts">' + entry.timestamp + '</span> ' +
-          '<strong>' + entry.event + '</strong>: ' + entry.summary + '</li>';
-      }).join('');
-      setLogStatus('success', entries.length + ' event(s) in datastore.');
-    })
-    .catch(function (err) {
-      logEl.innerHTML = '';
-      setLogStatus('error', 'Failed to load log: ' + (err.message || 'unknown error'));
+  bind('btn-update-schedule', async function () {
+    const response = await invokeSMI('updateScheduleDemo', {
+      name: 'finsecure_sla_scan',
+      data: { task_id: 10001 }
     });
+    writeOutput('updateScheduleDemo response', response);
+  });
+
+  bind('btn-run-job', async function () {
+    const result = await appState.client.job.invoke('bulkTicket', 'finsecure_batch', {
+      batch_size: 25
+    });
+    appState.latestJobId = result.id || (result.response && result.response.id) || '';
+    document.getElementById('job-id').textContent = appState.latestJobId
+      ? 'Latest job id: ' + appState.latestJobId
+      : 'Job invoked (id not returned in local dev)';
+    document.getElementById('btn-poll-job').disabled = !appState.latestJobId;
+    writeOutput('bulkTicket invoke response', result);
+  });
+
+  bind('btn-poll-job', async function () {
+    if (!appState.latestJobId) {
+      return;
+    }
+    const job = await appState.client.job.get(appState.latestJobId);
+    writeOutput('client.job.get response', job);
+  });
+
+  bind('btn-job-history', async function () {
+    const response = await invokeSMI('listJobHistory', {
+      tag: 'finsecure_batch',
+      page: 1,
+      limit: 10
+    });
+    writeOutput('listJobHistory response', response);
+  });
 }
 
-function handleErr(err) {
-  console.error('EventPulse UI error:', err);
-}
+document.addEventListener('DOMContentLoaded', function () {
+  initApp().catch(function (error) {
+    writeOutput('Init error', { message: String(error) });
+  });
+});

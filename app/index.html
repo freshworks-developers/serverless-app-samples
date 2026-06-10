@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>EventPulse Serverless</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script async src="{{{appclient}}}"></script>
-  <link rel="stylesheet" type="text/css" href="styles/style.css" />
-</head>
-<body>
-  <section class="app-body">
-    <fw-icon name="pulse" size="20" color="#2d6cdf"></fw-icon>
-    <h1>EventPulse</h1>
-    <p class="subtitle">Serverless event log — dev status panel (Crayons v4)</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinSecure Serverless Demo</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script async src="{{{appclient}}}"></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <h1>FinSecure Serverless Demo</h1>
+        <p>
+          Exercises SMI, Jobs, scheduled events, and routing automation patterns from the
+          Freshworks serverless docs.
+        </p>
+      </header>
 
-    <fw-accordion>
-      <fw-accordion-title slot="header">Registered handlers</fw-accordion-title>
-      <fw-accordion-body slot="body">
-        <ul id="handler-status" class="handler-list"></ul>
-      </fw-accordion-body>
-    </fw-accordion>
+      <section class="card">
+        <h2>Server method invocation (SMI)</h2>
+        <p class="hint">Calls allowlisted functions in <code>server/server.js</code> via <code>client.request.invoke</code>.</p>
+        <label class="field">
+          <span>Message</span>
+          <input id="smi-message" type="text" value="hello from full page app" />
+        </label>
+        <div class="actions">
+          <button type="button" id="btn-smi-echo">Invoke smiEcho</button>
+          <button type="button" id="btn-fetch-schedule">Fetch schedule</button>
+          <button type="button" id="btn-update-schedule">Update schedule</button>
+        </div>
+      </section>
 
-    <div class="log-panel">
-      <div class="log-header">
-        <strong>Event log</strong>
-        <fw-button id="refresh-log" color="primary" size="small">Refresh</fw-button>
-      </div>
-      <fw-inline-message id="log-status" type="info" closable="false">
-        Loading event log from server…
-      </fw-inline-message>
-      <ul id="event-log" class="event-log"></ul>
-    </div>
-  </section>
-  <script src="scripts/app.js"></script>
-</body>
+      <section class="card">
+        <h2>Jobs</h2>
+        <p class="hint">
+          Long-running async tasks via <code>client.job.invoke</code>. Poll status with
+          <code>client.job.get</code>.
+        </p>
+        <div class="actions">
+          <button type="button" id="btn-run-job">Run bulkTicket job</button>
+          <button type="button" id="btn-job-history">List job history</button>
+          <button type="button" id="btn-poll-job" disabled>Poll latest job</button>
+        </div>
+        <p id="job-id" class="meta"></p>
+      </section>
+
+      <section class="card">
+        <h2>Output</h2>
+        <pre id="output" class="output">Waiting for client…</pre>
+      </section>
+    </main>
+
+    <script defer src="scripts/app.js"></script>
+  </body>
 </html>

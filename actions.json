@@ -1,0 +1,36 @@
+{
+  "validateUserMultipleDigits": {
+    "display_name": "Validate multi-digit caller input",
+    "parameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "string"
+        }
+      },
+      "required": ["input"]
+    },
+    "response": {
+      "type": "string"
+    },
+    "description": "Freshcaller routing automation sample from platform docs — validates IVR multi-digit input."
+  },
+  "validateIncomingCaller": {
+    "display_name": "Validate incoming phone number",
+    "parameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "string"
+        }
+      },
+      "required": ["input"]
+    },
+    "response": {
+      "type": "string"
+    },
+    "description": "Routes VIP callers when the incoming phone number matches a configured prefix."
+  }
+}
