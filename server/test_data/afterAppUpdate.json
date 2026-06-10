@@ -1,0 +1,10 @@
+{
+  "timestamp": 1711363200000,
+  "event": "afterAppUpdate",
+  "version": "1.1.0",
+  "region": "US",
+  "iparams": {
+    "subdomain": "demo",
+    "api_key": "test-api-key"
+  }
+}

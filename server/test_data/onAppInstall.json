@@ -1,0 +1,9 @@
+{
+  "timestamp": 1711363200000,
+  "event": "onAppInstall",
+  "region": "US",
+  "iparams": {
+    "subdomain": "demo",
+    "api_key": "test-api-key"
+  }
+}

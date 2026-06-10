@@ -140,6 +140,12 @@
       }
     },
     "service_ticket": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
       "events": {
         "onTicketCreate": {
           "handler": "onTicketCreateCallback"

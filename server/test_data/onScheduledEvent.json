@@ -1,0 +1,13 @@
+{
+  "timestamp": 1711363200000,
+  "event": "onScheduledEvent",
+  "region": "US",
+  "data": {
+    "event_info": "app_install",
+    "tenant": "demo"
+  },
+  "iparams": {
+    "subdomain": "demo",
+    "api_key": "test-api-key"
+  }
+}

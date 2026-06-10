@@ -1,0 +1,17 @@
+{
+  "timestamp": 1711363200000,
+  "event": "onTicketCreate",
+  "region": "US",
+  "data": {
+    "ticket": {
+      "id": 42,
+      "subject": "Demo ticket from test payload",
+      "priority": 2,
+      "status": 2
+    }
+  },
+  "iparams": {
+    "subdomain": "demo",
+    "api_key": "test-api-key"
+  }
+}
